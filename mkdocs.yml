@@ -1,0 +1,48 @@
+site_name: AI Knowledge Base
+docs_dir: knowledge_base/wiki
+site_dir: site
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - search.suggest
+
+plugins:
+  - search
+
+nav:
+  - Data Structure:
+      - Binary Tree Basic: data_structure/BinaryTree_Basic.md
+      - LinkedList Delete Value: data_structure/LinkedList_Delete_Value.md
+      - LinkedList Head Tail Insert: data_structure/LinkedList_Head_Tail_Insert.md
+      - LinkedList Insert Delete: data_structure/LinkedList_Insert_Delete.md
+      - LinkedList Ordered Merge: data_structure/LinkedList_Ordered_Merge.md
+      - LinkedList Reverse: data_structure/LinkedList_Reverse.md
+      - QuickSort Partition: data_structure/QuickSort_Partition.md
+      - Search Basic: data_structure/Search_Basic.md
+      - SeqList Delete All X: data_structure/SeqList_Delete_All_X.md
+      - SeqList Insert Delete: data_structure/SeqList_Insert_Delete.md
+      - SeqList Ordered Merge: data_structure/SeqList_Ordered_Merge.md
+      - SeqList Reverse: data_structure/SeqList_Reverse.md
+      - Sort Basic: data_structure/Sort_Basic.md
+      - Stack Queue Basic: data_structure/Stack_Queue_Basic.md
+  - Problem Patterns:
+      - DataStructure Problem Patterns: problem_patterns/DataStructure_Problem_Patterns.md
+  - Code Templates:
+      - DataStructure Code Templates: code_templates/DataStructure_Code_Templates.md
+  - Exercise Feedback:
+      - LinkedList Mistakes: exercise_feedback/LinkedList_Mistakes.md
+      - SeqList Mistakes: exercise_feedback/SeqList_Mistakes.md
+  - Mental Models:
+      - SeqList vs LinkedList: mental_models/SeqList_vs_LinkedList.md
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
