@@ -1,0 +1,35 @@
+KV Cache 是 Transformer 推理阶段的重要优化机制。
+
+在 Attention 计算中，
+当前 token 需要与之前所有 token 的 Key 和 Value 进行计算。
+如果每生成一个新 token，
+都重新计算之前所有 token 的 K 和 V，
+推理开销会快速增长。
+
+因此，
+推理时通常会缓存历史 token 的 Key 和 Value，
+这就是 KV Cache。
+
+生成新 token 时，
+模型只需要：
+1. 计算当前 token 的 Query
+2. 读取历史 KV Cache
+3. 与缓存内容进行 Attention 计算
+
+这样避免了重复计算，
+显著提升了推理速度。
+
+随着上下文长度增加，
+KV Cache 会占用大量显存和内存带宽，
+因此它也成为大模型推理的重要瓶颈之一。
+
+在 AI 加速中，
+KV Cache 的组织方式、
+数据搬运、
+memory bandwidth、
+cache 命中率、
+以及流水线调度都非常重要。
+
+对于 FPGA 和 AI Accelerator，
+KV Cache 不只是“缓存”，
+而是整个推理系统中的核心数据流结构。

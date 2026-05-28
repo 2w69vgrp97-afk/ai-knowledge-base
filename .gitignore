@@ -1,0 +1,7 @@
+__pycache__/
+.DS_Store
+*.pyc
+.obsidian/workspace*
+.obsidian/cache
+node_modules/
+site/

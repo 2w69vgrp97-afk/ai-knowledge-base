@@ -1,0 +1,44 @@
+PagedAttention 是一种用于管理 Transformer KV Cache 的机制。
+
+在 Continuous Batching 场景下，
+不同用户的上下文长度不同，
+KV Cache 会不断动态增长和释放。
+
+如果要求每个用户的 KV Cache 必须连续存储，
+会导致显存碎片化和频繁的大规模数据搬运。
+
+因此，
+PagedAttention 会把用户的 KV Cache
+拆分成一个个 page/block。
+
+这样：
+- 一个用户的 KV 不必连续存储
+- 系统可以按 page 为单位动态调度
+- 上下文增长时只需要新增 page
+- 不需要整体搬运 KV Cache
+
+例如：
+A1 A2 B1 B2 B3 A3
+
+说明不同用户的 page
+可以在显存中交错分布，
+系统通过类似 page table 的方式记录映射关系。
+
+PagedAttention 可以提高：
+- 显存利用率
+- batching 灵活性
+- 动态调度能力
+
+在 AI 推理系统中，
+PagedAttention 本质上是一种
+类似操作系统分页管理的 memory management 思想。
+
+Page size 的设计通常需要考虑：
+- memory alignment
+- cache locality
+- memory transaction size
+- GPU 数据读取效率
+
+因此，
+PagedAttention 不只是 Attention 优化，
+更是 AI Serving System 中的重要内存管理机制。

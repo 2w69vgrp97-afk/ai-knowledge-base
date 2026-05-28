@@ -1,0 +1,96 @@
+# 快速排序 Partition
+
+## 核心问题
+
+快速排序的一趟划分如何把枢轴放到最终位置？
+
+## 这个概念是什么
+
+快速排序通过一趟划分把序列分成左右两部分。
+
+左边元素不大于枢轴 pivot。
+
+右边元素不小于枢轴 pivot。
+
+一趟划分结束后，pivot 会到达它在最终有序序列中的位置。
+
+## 为什么需要它
+
+Partition 是快速排序的核心步骤。
+
+快速排序不是先整体排序，而是先确定一个枢轴的位置，再递归处理左右子区间。
+
+## 调用前提
+
+调用 Partition 时，必须保证 low <= high。
+
+待划分区间必须非空。
+
+否则读取 a[low] 作为 pivot 会越界或没有意义。
+
+## pivot 的作用
+
+pivot 是本趟划分的基准值。
+
+常见写法会先保存 pivot = a[low]。
+
+保存 pivot 后，原来的 a[low] 可以被当作“坑位”使用。
+
+## C/C++ Partition 模板
+
+```cpp
+int Partition(int a[], int low, int high) {
+    int pivot = a[low];
+    while (low < high) {
+        while (low < high && a[high] >= pivot) --high;
+        a[low] = a[high];
+        while (low < high && a[low] <= pivot) ++low;
+        a[high] = a[low];
+    }
+    a[low] = pivot;
+    return low;
+}
+```
+
+## QuickSort 递归模板
+
+```cpp
+void QuickSort(int a[], int low, int high) {
+    if (low >= high) return;
+
+    int pivotPos = Partition(a, low, high);
+    QuickSort(a, low, pivotPos - 1);
+    QuickSort(a, pivotPos + 1, high);
+}
+```
+
+## 常见错误
+
+- 忘记先保存 pivot，导致枢轴值被覆盖。
+- high 和 low 移动顺序写错。
+- 递归边界写错，导致死递归或漏排区间。
+- 误以为一趟划分后整个序列已经有序。
+
+## 当前理解
+
+一趟划分只保证 pivot 到达最终位置。
+
+pivot 左右两侧分别满足相对 pivot 的大小关系。
+
+左右子区间内部仍然可能无序，需要继续递归排序。
+
+## 和已有知识的联系
+
+快速排序属于基础排序题型。
+
+Partition 和顺序表中的下标移动、元素覆盖、边界判断有关。
+
+## 待追问
+
+- 不同 Partition 写法的移动顺序为什么不同？
+- 快速排序最坏情况为什么会退化到 O(n^2)？
+- 如何选择 pivot 能降低退化风险？
+
+## 来源说明
+
+来源：数据结构第14、15、16章复习主题整理。

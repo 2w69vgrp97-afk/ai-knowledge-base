@@ -1,0 +1,107 @@
+# 带头结点单链表头插法与尾插法
+
+## 核心思想
+
+本文件讨论带头结点单链表的头插法和尾插法。
+
+头结点不存放有效数据，只用于统一空表和非空表的操作。
+
+头插法把新结点插到头结点之后。
+
+尾插法把新结点插到当前尾结点之后。
+
+插入时必须先让新结点接上后继，再修改前驱结点的 next。
+
+## 调用前提
+
+本文默认使用带头结点单链表。
+
+head 必须是有效头结点指针，不是 nullptr。
+
+代码模板默认 new 成功，考试模板一般不处理 new 失败。
+
+## C/C++ 代码模板
+
+```cpp
+struct LNode {
+    int data;
+    LNode* next;
+};
+
+void HeadInsert(LNode* head, int x) {
+    LNode* s = new LNode{x, nullptr};
+    s->next = head->next;
+    head->next = s;
+}
+
+void TailInsert(LNode* head, int x) {
+    LNode* tail = head;
+    while (tail->next != nullptr) {
+        tail = tail->next;
+    }
+
+    LNode* s = new LNode{x, nullptr};
+    tail->next = s;
+}
+```
+
+## 手写步骤
+
+头插法：
+
+1. 创建新结点 s。
+2. 令 s->next = head->next。
+3. 令 head->next = s。
+
+尾插法：
+
+1. 从 head 出发找到尾结点 tail。
+2. 创建新结点 s。
+3. 令 s->next = nullptr。
+4. 令 tail->next = s。
+
+连续尾插建表：
+
+1. 维护一个 tail 指针。
+2. 每插入一个新结点 q 后，令 tail->next = q。
+3. 再令 tail = q。
+4. q->next 必须置为 nullptr。
+
+## 边界条件
+
+空表：
+
+head->next == nullptr。
+
+头插法仍然可以直接插入。
+
+尾插法此时 head 本身就是尾结点。
+
+只有一个有效结点：
+
+头插和尾插都要保持链表不断链。
+
+时间代价：
+
+单次尾插如果每次都从 head 找尾，插入一次需要 O(n)。
+
+连续尾插建表时应维护 tail 指针，否则整体可能退化为 O(n^2)。
+
+## 常见错误
+
+- 头插时先写 head->next = s，导致原首元结点丢失。
+- 尾插时没有把新结点 next 置为 nullptr。
+- 把头结点当作有效数据结点处理。
+- 尾插每次都从头找尾，忘记可以维护 tail 指针优化。
+- 维护 tail 指针时，插入后忘记 tail = q。
+
+## 识别信号
+
+- 题目要求建立带头结点单链表。
+- 题目出现头插法或尾插法。
+- 题目要求保持输入顺序，通常想到尾插法。
+- 题目要求逆序建立链表，通常想到头插法。
+
+## 来源说明
+
+来源：数据结构链表专题复习整理。
