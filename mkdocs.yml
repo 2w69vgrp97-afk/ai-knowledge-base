@@ -16,20 +16,53 @@ plugins:
 
 nav:
   - Data Structure:
-      - Binary Tree Basic: data_structure/BinaryTree_Basic.md
-      - LinkedList Delete Value: data_structure/LinkedList_Delete_Value.md
-      - LinkedList Head Tail Insert: data_structure/LinkedList_Head_Tail_Insert.md
-      - LinkedList Insert Delete: data_structure/LinkedList_Insert_Delete.md
-      - LinkedList Ordered Merge: data_structure/LinkedList_Ordered_Merge.md
-      - LinkedList Reverse: data_structure/LinkedList_Reverse.md
-      - QuickSort Partition: data_structure/QuickSort_Partition.md
-      - Search Basic: data_structure/Search_Basic.md
-      - SeqList Delete All X: data_structure/SeqList_Delete_All_X.md
-      - SeqList Insert Delete: data_structure/SeqList_Insert_Delete.md
-      - SeqList Ordered Merge: data_structure/SeqList_Ordered_Merge.md
-      - SeqList Reverse: data_structure/SeqList_Reverse.md
-      - Sort Basic: data_structure/Sort_Basic.md
-      - Stack Queue Basic: data_structure/Stack_Queue_Basic.md
+      - 基础与线性结构:
+          - DataStructure Basic Concepts: data_structure/DataStructure_Basic_Concepts.md
+          - Algorithm Properties Complexity: data_structure/Algorithm_Properties_Complexity.md
+          - LinearList Basic: data_structure/LinearList_Basic.md
+          - Array Basic: data_structure/Array_Basic.md
+          - SeqList Insert Delete: data_structure/SeqList_Insert_Delete.md
+          - SeqList Delete All X: data_structure/SeqList_Delete_All_X.md
+          - SeqList Reverse: data_structure/SeqList_Reverse.md
+          - SeqList Ordered Merge: data_structure/SeqList_Ordered_Merge.md
+          - LinkedList Insert Delete: data_structure/LinkedList_Insert_Delete.md
+          - LinkedList Head Tail Insert: data_structure/LinkedList_Head_Tail_Insert.md
+          - LinkedList Reverse: data_structure/LinkedList_Reverse.md
+          - LinkedList Delete Value: data_structure/LinkedList_Delete_Value.md
+          - LinkedList Ordered Merge: data_structure/LinkedList_Ordered_Merge.md
+          - Stack Queue Basic: data_structure/Stack_Queue_Basic.md
+          - LinkedQueue Basic: data_structure/LinkedQueue_Basic.md
+          - Stack Applications Basic: data_structure/Stack_Applications_Basic.md
+          - Special Matrix Compression: data_structure/Special_Matrix_Compression.md
+          - Sparse Matrix Basic: data_structure/Sparse_Matrix_Basic.md
+      - 树与二叉树:
+          - Tree Basic: data_structure/Tree_Basic.md
+          - Binary Tree Basic: data_structure/BinaryTree_Basic.md
+          - BinarySearchTree Basic: data_structure/BinarySearchTree_Basic.md
+          - Huffman Tree Encoding: data_structure/Huffman_Tree_Encoding.md
+      - 图:
+          - Graph Basic: data_structure/Graph_Basic.md
+          - Graph Adjacency Matrix: data_structure/Graph_Adjacency_Matrix.md
+          - Graph Adjacency List: data_structure/Graph_Adjacency_List.md
+          - Graph DFS BFS: data_structure/Graph_DFS_BFS.md
+          - Minimum Spanning Tree: data_structure/Minimum_Spanning_Tree.md
+          - Topological Sort AOV: data_structure/Topological_Sort_AOV.md
+          - AOE Critical Path: data_structure/AOE_Critical_Path.md
+      - 查找:
+          - Search Basic: data_structure/Search_Basic.md
+          - Block Search Basic: data_structure/Block_Search_Basic.md
+          - BinarySearchTree Search: data_structure/BinarySearchTree_Search.md
+          - HashTable Basic: data_structure/HashTable_Basic.md
+          - Hash Linear Probing: data_structure/Hash_Linear_Probing.md
+          - Hash Chaining: data_structure/Hash_Chaining.md
+      - 排序:
+          - Sort Basic: data_structure/Sort_Basic.md
+          - QuickSort Partition: data_structure/QuickSort_Partition.md
+          - Binary Insertion Sort: data_structure/Binary_Insertion_Sort.md
+          - Shell Sort Basic: data_structure/Shell_Sort_Basic.md
+          - Heap Sort Basic: data_structure/Heap_Sort_Basic.md
+          - Radix Sort Basic: data_structure/Radix_Sort_Basic.md
+          - Sort Complexity Stability Summary: data_structure/Sort_Complexity_Stability_Summary.md
   - Problem Patterns:
       - DataStructure Problem Patterns: problem_patterns/DataStructure_Problem_Patterns.md
   - Code Templates:
