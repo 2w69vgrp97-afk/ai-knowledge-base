@@ -86,6 +86,8 @@ bool Delete(SeqList& L, int i, int& x) {
 
 删除合法范围是 `0 <= i < length`，不同于插入。
 
+删除下标 `i` 时，移动的是 `data[i + 1]` 到 `data[length - 1]`，移动次数为 `length - i - 1`，即长度为 `n` 时是 `n - i - 1`。
+
 识别信号：
 
 题目出现“删除第 i 个元素”，且循环体通常是 `data[j] = data[j + 1]`。
@@ -424,6 +426,46 @@ bool Pop(SqStack& S, int& x) {
 
 `top` 初值、判空、判满必须使用同一套约定。
 
+## 括号匹配
+
+相关知识页：
+
+- [[Stack_Applications_Basic]]
+- [[StackQueue_Mistakes]]
+
+```cpp
+bool Match(char s[]) {
+    char st[MaxSize];
+    int top = -1;
+    for (int i = 0; s[i] != '\0'; ++i) {
+        char c = s[i];
+        if (c == '(' || c == '[' || c == '{') {
+            if (top == MaxSize - 1) return false;
+            st[++top] = c;
+        } else if (c == ')' || c == ']' || c == '}') {
+            if (top == -1) return false;
+            char t = st[top--];
+            if ((c == ')' && t != '(') ||
+                (c == ']' && t != '[') ||
+                (c == '}' && t != '{')) {
+                return false;
+            }
+        }
+    }
+    return top == -1;
+}
+```
+
+手写步骤：
+
+左括号入栈，右括号先判空再匹配栈顶，非括号字符跳过，扫描结束判断栈空。
+
+最容易错的位置：
+
+遇右括号必须先判空，否则右括号多于左括号时会访问无效栈顶。
+
+常见错题反馈：[[StackQueue_Mistakes]]
+
 ## 循环队列 EnQueue / DeQueue
 
 ```cpp
@@ -610,6 +652,8 @@ int Partition(int a[], int low, int high) {
 - [[LinkedList_Ordered_Merge]]
 - [[LinkedList_Mistakes]]
 - [[Stack_Queue_Basic]]
+- [[Stack_Applications_Basic]]
+- [[StackQueue_Mistakes]]
 - [[Search_Basic]]
 - [[Sort_Basic]]
 - [[QuickSort_Partition]]

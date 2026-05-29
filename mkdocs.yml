@@ -35,8 +35,11 @@ nav:
   - Code Templates:
       - DataStructure Code Templates: code_templates/DataStructure_Code_Templates.md
   - Exercise Feedback:
+      - Algorithm Mistakes: exercise_feedback/Algorithm_Mistakes.md
       - LinkedList Mistakes: exercise_feedback/LinkedList_Mistakes.md
+      - Matrix Mistakes: exercise_feedback/Matrix_Mistakes.md
       - SeqList Mistakes: exercise_feedback/SeqList_Mistakes.md
+      - StackQueue Mistakes: exercise_feedback/StackQueue_Mistakes.md
   - Mental Models:
       - SeqList vs LinkedList: mental_models/SeqList_vs_LinkedList.md
 

@@ -1,0 +1,119 @@
+# 链队列基础
+
+## 核心概念
+
+链队列是用链式存储实现的队列。
+
+队列遵循先进先出。
+
+带头结点链队列通常设置两个指针：
+
+- front 指向头结点。
+- rear 指向队尾结点。
+
+空队时 front == rear。
+
+## 考试识别信号
+
+- 题目要求用链表实现队列。
+- 题目出现 front 和 rear 指针。
+- 题目要求入队、出队模板。
+- 题目强调出队最后一个结点时 rear 如何处理。
+
+## C/C++ 代码模板
+
+```cpp
+struct QNode {
+    int data;
+    QNode *next;
+};
+
+struct LinkQueue {
+    QNode *front;
+    QNode *rear;
+};
+
+void InitQueue(LinkQueue &Q) {
+    Q.front = Q.rear = new QNode{0, nullptr};
+}
+
+bool IsEmpty(LinkQueue& Q) {
+    return Q.front == Q.rear;
+}
+
+void EnQueue(LinkQueue& Q, int x) {
+    QNode* s = new QNode{x, nullptr};
+    Q.rear->next = s;
+    Q.rear = s;
+}
+
+bool DeQueue(LinkQueue& Q, int& x) {
+    if (Q.front == Q.rear) return false;
+
+    QNode* p = Q.front->next;
+    x = p->data;
+    Q.front->next = p->next;
+
+    if (Q.rear == p) {
+        Q.rear = Q.front;
+    }
+
+    delete p;
+    return true;
+}
+```
+
+模板前提：
+
+front 和 rear 已初始化为同一个有效头结点。
+
+默认 new 成功，考试模板一般不处理 new 失败。
+
+若未初始化就访问 Q.rear->next，会有空指针风险。
+
+## 手写步骤 / 计算步骤
+
+入队：
+
+1. 创建新结点 s。
+2. 令 s->next = nullptr。
+3. 令 rear->next = s。
+4. 令 rear = s。
+
+出队：
+
+1. 判断队空。
+2. 保存首元结点 p = front->next。
+3. 取出 p->data。
+4. front->next = p->next。
+5. 如果 p 是最后一个结点，令 rear = front。
+6. delete p。
+
+## 常见错误
+
+- 出队前没有判空。
+- 出队最后一个结点后没有让 rear 回到 front。
+- 入队后忘记 rear = s。
+- 删除结点后再访问该结点。
+
+## 边界条件
+
+空队：
+
+front == rear。
+
+只有一个元素：
+
+出队后必须令 rear = front。
+
+出队最后一个结点后，rear 必须回到 front。
+
+链队列和循环队列的区别：
+
+链队列靠指针连接结点。
+
+循环队列靠数组和取模复用空间。
+
+## 来源说明
+
+来源：数据结构第14章链队列基础复习整理。

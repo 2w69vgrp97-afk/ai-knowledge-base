@@ -12,6 +12,8 @@
 
 题目要求在顺序表第 i 个位置插入元素，或删除第 i 个元素。
 
+也可能要求计算插入、删除时的元素移动次数。
+
 对应知识页链接：
 
 - [[SeqList_Insert_Delete]]
@@ -31,6 +33,7 @@
 - 插入时移动方向写反。
 - 插入和删除的位置合法范围混淆。
 - 忘记更新 `length`。
+- 删除下标 `i` 的元素时，移动次数误写成 `n - i`；实际移动 `n - i - 1` 次。
 
 ## 删除顺序表中所有 x
 
@@ -303,6 +306,33 @@
 - 先移动 `top` 还是先写数据的约定混乱。
 - 忘记栈是后进先出。
 
+## 括号匹配
+
+题型识别：
+
+题目要求判断括号序列是否合法，或在表达式中检查 `()`、`[]`、`{}` 是否匹配。
+
+对应知识页链接：
+
+- [[Stack_Applications_Basic]]
+- [[Stack_Queue_Basic]]
+- [[DataStructure_Code_Templates]]
+- [[StackQueue_Mistakes]]
+
+核心套路：
+
+遇到左括号入栈。
+
+遇到右括号时先判栈空，再比较栈顶左括号类型，匹配后出栈。
+
+扫描结束后还要判断栈是否为空。
+
+常见错误：
+
+- 遇到右括号直接出栈，没有先判空。
+- 只检查扫描过程，最后忘记判断栈是否为空。
+- 没有跳过非括号字符。
+
 ## 循环队列
 
 题型识别：
@@ -327,6 +357,32 @@
 - 忘记取模。
 - 队空和队满条件冲突。
 - 牺牲一个单元时仍认为容量是 `maxsize`。
+
+## 特殊矩阵压缩
+
+题型识别：
+
+题目要求计算对称矩阵、三角矩阵或三对角矩阵压缩存储后的数组下标。
+
+对应知识页链接：
+
+- [[Special_Matrix_Compression]]
+- [[Array_Basic]]
+- [[Matrix_Mistakes]]
+
+核心套路：
+
+先判断原矩阵 `A` 和压缩数组 `B` 的下标起点。
+
+再判断存上三角还是下三角、按行优先还是按列优先。
+
+公式不要硬背，优先用“先数前面完整行，再加本行偏移”推导。
+
+常见错误：
+
+- 混淆 0-based 和 1-based 下标。
+- 没看清 `B` 从 0 还是从 1 开始。
+- 把压缩存储的目的误认为提高 CPU 速度。
 
 ## 二叉树遍历
 
@@ -385,6 +441,32 @@
 - 对普通单链表直接套用折半查找。
 - 更新边界时没有排除 `mid`。
 
+## 复杂度判断
+
+题型识别：
+
+题目给出循环、嵌套循环、递归或二分过程，要求判断时间复杂度。
+
+对应知识页链接：
+
+- [[Algorithm_Properties_Complexity]]
+- [[Search_Basic]]
+- [[Algorithm_Mistakes]]
+
+核心套路：
+
+先看基本操作执行次数如何随 `n` 增长。
+
+普通单层循环常见为 `O(n)`，嵌套求和常见为 `O(n^2)`。
+
+每次规模乘 2、除 2 或折半，常见为 `O(log n)`。
+
+常见错误：
+
+- 只按循环层数机械判断。
+- 把 `i *= 2` 或二分过程误判成 `O(n^2)`。
+- 忽略最好、平均、最坏复杂度的题目语境。
+
 ## 基础排序
 
 题型识别：
@@ -429,7 +511,13 @@
 - [[LinkedList_Ordered_Merge]]
 - [[LinkedList_Mistakes]]
 - [[Stack_Queue_Basic]]
+- [[Stack_Applications_Basic]]
+- [[StackQueue_Mistakes]]
+- [[Special_Matrix_Compression]]
+- [[Matrix_Mistakes]]
 - [[BinaryTree_Basic]]
+- [[Algorithm_Properties_Complexity]]
+- [[Algorithm_Mistakes]]
 - [[Search_Basic]]
 - [[Sort_Basic]]
 - [[QuickSort_Partition]]

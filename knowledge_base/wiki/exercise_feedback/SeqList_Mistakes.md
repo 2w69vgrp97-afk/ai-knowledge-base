@@ -116,11 +116,68 @@ for (int k = i; k < L.length - 1; ++k) {
 - 循环体中有 `data[k] = data[k + 1]`。
 - 循环边界写到了 `k < length`。
 
+## 顺序表主要优点误认为“存储空间一定不浪费”
+
+错误现象：
+
+选择题把顺序表的主要优点选成“存储空间一定不浪费”。
+
+原因：
+
+混淆了顺序表的空间分配特点。
+
+顺序表通常需要一段连续存储空间，静态顺序表还可能预留未使用容量，因此不能说存储空间一定不浪费。
+
+正确思路：
+
+顺序表的主要优点是随机访问快，支持按下标 `O(1)` 访问。
+
+关联 wiki：
+
+- [[SeqList_Insert_Delete]]
+- [[LinearList_Basic]]
+- [[Array_Basic]]
+
+识别信号：
+
+- 题目问“顺序表主要优点”。
+- 选项中同时出现“随机访问”和“节省空间”。
+- 题目强调按下标查找或第 i 个元素。
+
+## 删除顺序表下标 i 的元素时，移动次数误写为 n-i
+
+错误现象：
+
+计算删除顺序表下标 `i` 的元素时，把移动次数写成 `n - i`。
+
+原因：
+
+把被删除元素本身也算进了移动次数。
+
+正确思路：
+
+真正移动的是 `a[i + 1]` 到 `a[n - 1]` 这些后续元素。
+
+元素个数为 `n - i - 1`，因此删除下标 `i` 的元素需要移动 `n - i - 1` 次。
+
+关联 wiki：
+
+- [[SeqList_Insert_Delete]]
+- [[DataStructure_Code_Templates]]
+
+识别信号：
+
+- 题目问“删除第 i 个元素后需要移动多少次”。
+- 下标采用 0-based，顺序表长度为 `n`。
+- 容易把 `a[i]` 也算入移动范围。
+
 ## Obsidian 风格相关链接
 
 - [[SeqList_Insert_Delete]]
 - [[SeqList_Delete_All_X]]
 - [[SeqList_Reverse]]
+- [[LinearList_Basic]]
+- [[Array_Basic]]
 - [[DataStructure_Problem_Patterns]]
 - [[DataStructure_Code_Templates]]
 
